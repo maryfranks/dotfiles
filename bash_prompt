@@ -1,0 +1,48 @@
+#!/bin/bash
+source ~/dotfiles/colors
+
+__parse_git_branch() {
+    git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+__kube_ps1() {
+    # Get current context
+    CONTEXT=$(cat ~/.kube/config | grep "current-context:" --color=NO | sed "s/current-context: //")
+
+    if [ -n "$CONTEXT" ]; then
+        if [ "$CONTEXT" = "gke_sre-core-prod_us-central1_score-prod-us-central1-alpha" ]; then
+            echo -e "${RED}!! SCORE-PRODUCTION !!${NORMAL}"
+        elif [ "$CONTEXT" = "gke_graphql-api-201520_us-central1_beehive-cluster-sandbox" ]; then
+            echo -e "${YELLOW}* beehive-sandbox *${NORMAL}"
+        else
+            echo -e "${CYAN}${CONTEXT}${NORMAL}"
+        fi
+    fi
+}
+
+__ns_ps1() {
+    # Get current context
+    NAMESPACE=$(kubectl config view --minify --output 'jsonpath={..namespace}')
+
+    if [ -n "$NAMESPACE" ]; then
+        echo -e ":${CYAN}${NAMESPACE}${NORMAL}"
+    fi
+}
+
+__gcloud_ps1() {
+    CONTEXT=$(cat ~/.config/gcloud/active_config)
+
+    if [ -n "$CONTEXT" ]; then
+        if [ "$CONTEXT" = "production" ]; then
+            echo -e "${BRIGHT}${WHITE}${RED_BG}${BLINK}${CONTEXT}${NORMAL}"
+        else
+            echo -e "${YELLOW}${CONTEXT}${NORMAL}"
+        fi
+    fi
+}
+
+export PS1="\D{%F %T} \[${CYAN}\]{k8s \[${NORMAL}\]\$(__kube_ps1)\[${CYAN}\]\[${CYAN}\]\[${NORMAL}\]\$(__ns_ps1)\[${CYAN}\]} \[${POWDER_BLUE}\]\w \[${MAGENTA}\]\$(__parse_git_branch) \[${NORMAL}\] \n -->  "
+# export PS1="\D{%F %T} \[${CYAN}\]{\[${NORMAL}\]\$(__kube_ps1)\[${CYAN}\]} \[${POWDER_BLUE}\]\w \[${MAGENTA}\]\$(__parse_git_branch) \[${NORMAL}\] \n -->  "
+# this one adds gcloud info
+# export PS1="\[${CYAN}\]k:\[${NORMAL}\] \$(__kube_ps1) \[${GREEN}\]/\[${CYAN}\]g:\[${NORMAL}\] \$(__gcloud_ps1) \n\D{%F %T} \[${NORMAL}\] \[${GREEN}\]\u\[${NORMAL}\]@\[${GREEN}\]\h \[${POWDER_BLUE}\]\w \[${MAGENTA}\]\$(__parse_git_branch) \[${NORMAL}\] \n -->  "
+# \[${NORMAL}\] \[${GREEN}\]\u\[${NORMAL}\]@\[${GREEN}\]\h

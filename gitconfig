@@ -1,0 +1,15 @@
+[user]
+	name = Mary Franks
+	email = maryfranks@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global
+[diff "sopsdiffer"]
+	textconv = sops -d
+[branch]
+	autosetuprebase = always
+[pull]
+	rebase = true
+[alias]
+	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[init]
+	defaultBranch = main
