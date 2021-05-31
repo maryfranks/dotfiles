@@ -1,3 +1,5 @@
+# https://github.com/Homebrew/homebrew-bundle for docs
+
 ######## Utilities ########
 brew "direnv"
 brew "fzf"
