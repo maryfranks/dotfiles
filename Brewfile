@@ -10,6 +10,7 @@ brew "sops"
 brew "watch"
 brew "openssl"
 brew "wget"
+brew "parallel"
 
 ######## Kubernetes ########
 brew "minikube"
@@ -24,6 +25,7 @@ brew "kustomize"
 brew "argocd"
 brew "dockerize" # for backstage
 brew "tfenv"
+brew "fluxcd/tap/flux"
 
 ######## Ruby ########
 brew "ruby"
