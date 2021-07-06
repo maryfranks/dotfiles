@@ -1,7 +1,7 @@
 # import aliases, prompt, etc.
 source ~/dotfiles/bash_aliases
 source ~/dotfiles/bash_prompt
-source ~/dotfiles/secrets
+# source ~/dotfiles/secrets
 
 # git tab completion (branch / file names)
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
@@ -32,8 +32,8 @@ if [ -f '/Users/mary.f/google-cloud-sdk/path.bash.inc' ]; then . '/Users/mary.f/
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/mary.f/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/mary.f/google-cloud-sdk/completion.bash.inc'; fi
-
-export PATH=$PATH:$PYTHON_HOME/bin:$HOME/bin:$TERRAFORM_HOME/bin
+export GOPATH="$HOME/go"
+export PATH=$PATH:$PYTHON_HOME/bin:$HOME/bin:$TERRAFORM_HOME/bin:$GOPATH/bin
 
 # these lines needs to come AFTER the last place you export the PATH 
 eval "$(direnv hook bash)"
