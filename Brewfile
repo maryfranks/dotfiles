@@ -3,6 +3,7 @@
 ######## Utilities ########
 brew "direnv"
 brew "fzf"
+tap "instrumenta/instrumenta"
 brew "kubeval"
 brew "bash-completion"
 brew "git"
@@ -14,7 +15,7 @@ brew "parallel"
 
 ######## Kubernetes ########
 brew "minikube"
-brew "rbac-lookup" # find Kubernetes roles and cluster roles bound to any user
+brew "FairwindsOps/tap/rbac-lookup" # find Kubernetes roles and cluster roles bound to any user
 brew "helm"
 brew "kubernetes-cli" # kubectl
 brew "k9s"
@@ -25,7 +26,6 @@ brew "kustomize"
 brew "argocd"
 brew "dockerize" # for backstage
 brew "tfenv"
-brew "fluxcd/tap/flux"
 
 ######## Ruby ########
 brew "ruby"
@@ -35,24 +35,16 @@ brew "rbenv"
 brew "nodenv"
 brew "yarn"
 
-######## DB ########
-brew "redis"
-brew "postgresql"
-brew "sqlite"
-
 ######## Casks ########
 # casks error on reinstall, comment them out to re-run script
 
-# cask "alfred"
-# cask "iterm2"
-# cask "postman"
-# cask "textmate"
-# cask "visual-studio-code"
-# cask "cheatsheet"
-# cask "vlc"
-# cask "firefox"
-# cask "meld"
-# cask "spectacle"
-# cask "insomnia"
-# cask "ngrok" # turns localhost into something you can hit with a webhook
-# cask "spotify"
+cask "iterm2"
+cask "postman"
+cask "textmate"
+cask "visual-studio-code"
+cask "cheatsheet"
+cask "meld"
+cask "spectacle"
+cask "ngrok" # turns localhost into something you can hit with a webhook
+cask "spotify"
+cask "slack"

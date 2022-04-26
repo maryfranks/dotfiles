@@ -24,9 +24,6 @@ ln -s ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/gitignore_global ~/.gitignore_global
 ln -s ~/dotfiles/vimrc ~/.vimrc
 
-echo "Creating secrets (not tracked in git)..."
-touch secrets
-
 echo "Installing git and git completion"
 brew install git bash-completion 
 
