@@ -10,10 +10,12 @@ __kube_ps1() {
     CONTEXT=$(cat ~/.kube/config | grep "current-context:" --color=NO | sed "s/current-context: //")
 
     if [ -n "$CONTEXT" ]; then
-        if [ "$CONTEXT" = "gke_sre-core-prod_us-central1_score-prod-us-central1-alpha" ]; then
-            echo -e "${RED}!! SCORE-PRODUCTION !!${NORMAL}"
-        elif [ "$CONTEXT" = "gke_graphql-api-201520_us-central1_beehive-cluster-sandbox" ]; then
-            echo -e "${YELLOW}* beehive-sandbox *${NORMAL}"
+        if [ "$CONTEXT" = "gke_prod-bonsai_us-central1_bonsai" ]; then
+            echo -e "${RED}!! BONSAI PROD !!${NORMAL}"
+        elif [ "$CONTEXT" = "gke_stag-bonsai_us-central1_bonsai" ]; then
+            echo -e "${BLUE}# bonsai staging #${NORMAL}"
+        elif [ "$CONTEXT" = "gke_dev-bonsai-fab1_us-central1_bonsai" ]; then
+            echo -e "${GREEN}# bonsai dev #${NORMAL}"
         else
             echo -e "${CYAN}${CONTEXT}${NORMAL}"
         fi
@@ -25,7 +27,7 @@ __ns_ps1() {
     NAMESPACE=$(kubectl config view --minify --output 'jsonpath={..namespace}')
 
     if [ -n "$NAMESPACE" ]; then
-        echo -e ":${CYAN}${NAMESPACE}${NORMAL}"
+        echo -e " | ${CYAN}${NAMESPACE}${NORMAL}"
     fi
 }
 
@@ -41,7 +43,7 @@ __gcloud_ps1() {
     fi
 }
 
-export PS1="\D{%F %T} \[${CYAN}\]{k8s \[${NORMAL}\]\$(__kube_ps1)\[${CYAN}\]\[${CYAN}\]\[${NORMAL}\]\$(__ns_ps1)\[${CYAN}\]} \[${POWDER_BLUE}\]\w \[${MAGENTA}\]\$(__parse_git_branch) \[${NORMAL}\] \n -->  "
+export PS1="\D{%F %T} \[${CYAN}\]{\[${NORMAL}\]\$(__kube_ps1)\[${CYAN}\]\[${CYAN}\]\[${NORMAL}\]\$(__ns_ps1)\[${CYAN}\]} \[${POWDER_BLUE}\]\w \[${MAGENTA}\]\$(__parse_git_branch) \[${NORMAL}\] \n -->  "
 # export PS1="\D{%F %T} \[${CYAN}\]{\[${NORMAL}\]\$(__kube_ps1)\[${CYAN}\]} \[${POWDER_BLUE}\]\w \[${MAGENTA}\]\$(__parse_git_branch) \[${NORMAL}\] \n -->  "
 # this one adds gcloud info
 # export PS1="\[${CYAN}\]k:\[${NORMAL}\] \$(__kube_ps1) \[${GREEN}\]/\[${CYAN}\]g:\[${NORMAL}\] \$(__gcloud_ps1) \n\D{%F %T} \[${NORMAL}\] \[${GREEN}\]\u\[${NORMAL}\]@\[${GREEN}\]\h \[${POWDER_BLUE}\]\w \[${MAGENTA}\]\$(__parse_git_branch) \[${NORMAL}\] \n -->  "

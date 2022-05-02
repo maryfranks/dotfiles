@@ -1,13 +1,17 @@
 # import aliases, prompt, etc.
 source ~/dotfiles/bash_aliases
 source ~/dotfiles/bash_prompt
-# source ~/dotfiles/secrets
+source ~/dotfiles/secrets
 
 # git tab completion (branch / file names)
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 # ruby version manaager
 eval "$(rbenv init -)"
+
+# gremlin
+export GREMLIN_TEAM_ID="05d007d9-1eb1-43f6-9007-d91eb163f6d6"
+export GREMLIN_CLUSTER_ID="gke_dev-bonsai-fab1_us-central1_bonsai"
 
 # fixes problems with bash history
 export HISTCONTROL=ignoreboth:erasedups
@@ -38,6 +42,8 @@ export PATH=$PATH:$PYTHON_HOME/bin:$HOME/bin:$TERRAFORM_HOME/bin:$GOPATH/bin
 # these lines needs to come AFTER the last place you export the PATH 
 eval "$(direnv hook bash)"
 eval "$(nodenv init -)"
+
+# if ctrl+r isn't working, run $(brew --prefix)/opt/fzf/install
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 echo "reloaded"

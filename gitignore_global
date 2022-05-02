@@ -1,3 +1,9 @@
+
+# Env Files #
+#############
+.envrc
+.node-version
+
 # Node Modules #
 ################
 node_modules
@@ -5,6 +11,8 @@ node_modules
 # Unencrypted secrets #
 #######################
 *.dec
+ca.crt
+secrets
 
 # Java/IntelliJ/Maven/Gradle #
 ################
