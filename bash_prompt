@@ -10,14 +10,14 @@ __kube_ps1() {
     CONTEXT=$(cat ~/.kube/config | grep "current-context:" --color=NO | sed "s/current-context: //")
 
     if [ -n "$CONTEXT" ]; then
-        if [ "$CONTEXT" = "gke_prod-bonsai_us-central1_bonsai" ]; then
-            echo -e "${RED}!! BONSAI PROD !!${NORMAL}"
-        elif [ "$CONTEXT" = "gke_stag-bonsai_us-central1_bonsai" ]; then
-            echo -e "${BLUE}# bonsai staging #${NORMAL}"
-        elif [ "$CONTEXT" = "gke_dev-bonsai-fab1_us-central1_bonsai" ]; then
-            echo -e "${GREEN}# bonsai dev #${NORMAL}"
+        if [ "$CONTEXT" = "gke_delphia-prod_northamerica-northeast1-b_application" ]; then
+            echo -e "${RED}!! "$CONTEXT" !!${NORMAL}"
+        elif [ "$CONTEXT" = "gke_delphia-staging_northamerica-northeast1-b_application" ]; then
+            echo -e "${BLUE}# "$CONTEXT" #${NORMAL}"
+        elif [ "$CONTEXT" = "gke_delphia-devops_europe-west1-b_devops" ]; then
+            echo -e "${GREEN}# "$CONTEXT" #${NORMAL}"
         else
-            echo -e "${CYAN}${CONTEXT}${NORMAL}"
+            echo -e "${CYAN}# "$CONTEXT" #${NORMAL}"
         fi
     fi
 }
