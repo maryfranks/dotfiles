@@ -1,17 +1,17 @@
 # https://github.com/Homebrew/homebrew-bundle for docs
 
 ######## Utilities ########
-brew "direnv"
 brew "fzf"
-tap "instrumenta/instrumenta"
-brew "kubeval"
-brew "bash-completion"
 brew "git"
 brew "sops"
 brew "watch"
 brew "openssl"
 brew "wget"
 brew "parallel"
+brew "tfenv"
+brew "wg"
+brew "jq"
+brew "gnupg"
 
 ######## Kubernetes ########
 brew "minikube"
@@ -20,31 +20,41 @@ brew "helm"
 brew "kubernetes-cli" # kubectl
 brew "k9s"
 brew "kubectx"
-
-######## SRE Core ########
 brew "kustomize"
-brew "argocd"
-brew "dockerize" # for backstage
-brew "tfenv"
+brew "krew" # package manager for kubectl plugins
+brew "pluto" #CLI tool to help discover deprecated apiVersions in Kubernetes
+
+######## GCLOUD ########
+brew "google-cloud-sdk"
+
+######## Python ########
+brew "pyenv"
+brew "pyenv-virtualenv"
 
 ######## Ruby ########
-brew "ruby"
-brew "rbenv"
+# brew "ruby"
+# brew "rbenv"
 
 ######## Node ########
-brew "nodenv"
-brew "yarn"
+# brew "nodenv"
+# brew "yarn"
 
 ######## Casks ########
-# casks error on reinstall, comment them out to re-run script
-
 cask "iterm2"
-cask "postman"
 cask "textmate"
 cask "visual-studio-code"
 cask "cheatsheet"
-cask "meld"
-cask "spectacle"
+cask "meld" # visual diff and merge tool
+cask "rectangle"
 cask "ngrok" # turns localhost into something you can hit with a webhook
 cask "spotify"
-cask "slack"
+# cask "slack" # anything installed outside of brew will error out b/c the application already exists
+cask "docker"
+
+######## Recursion ########
+brew "grpc"
+brew "pinentry"
+brew "pinentry-mac"
+brew "argocd"
+cask "mob"
+cask "lens"
