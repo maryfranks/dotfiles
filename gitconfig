@@ -3,6 +3,7 @@
 	email = maryfranks@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
+	sshCommand = ssh -i ~/.ssh/github-rxrx-MFRA-XKGTJ2-MBP-2024-01-03
 [diff "sopsdiffer"]
 	textconv = sops -d
 [branch]
