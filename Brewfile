@@ -56,5 +56,8 @@ brew "grpc"
 brew "pinentry"
 brew "pinentry-mac"
 brew "argocd"
+brew "opa"
 cask "mob"
 cask "lens"
+
+brew "zsh-completions"

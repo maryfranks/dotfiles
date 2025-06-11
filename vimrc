@@ -1,32 +1,28 @@
 " ==== Plugins ====
+
 call plug#begin('~/.vim/plugged')
-" Plug 'easymotion/vim-easymotion'
-Plug 'ajh17/spacegray.vim' 
+Plug 'EdenEast/nightfox.nvim'
 Plug '/usr/local/opt/fzf'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-" Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'antoinemadec/coc-fzf'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-surround'
-" Plug 'nicwest/vim-http'
 Plug 'airblade/vim-gitgutter'
 " Plug 'machakann/vim-highlightedyank'
 Plug 'preservim/nerdcommenter'
 Plug 'kien/rainbow_parentheses.vim'
-" Plug 'janko/vim-test'
-" Plug 'raimondi/delimitmate'
-" Plug 'vimwiki/vimwiki'
-" Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-markdown'
 " Plug 'Asheq/close-buffers.vim'
 " Plug 'AndrewRadev/linediff.vim'
 Plug 'terryma/vim-multiple-cursors'
 call plug#end()
+
+filetype plugin on
+
 " ==== Configuration =====
 " turn on syntax highlighting
 syntax on
@@ -61,20 +57,8 @@ set hlsearch
 " history
 set history=100
 
-" -------------------------------------------------------------------------------------------------
-" NERDTree
-" -------------------------------------------------------------------------------------------------
-autocmd StdinReadPre * let s:std_in=1
-" Automatically open NERDTree when starting vim on a directory
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif 
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-:nnoremap <C-b> :NERDTreeToggle<CR>
-" Show hidden files
-let NERDTreeShowHidden=1
-
 " set theme
-let g:spacegray_low_contrast = 1
-colorscheme spacegray 
+colorscheme nightfox 
 " set line number colour to grey
 highlight LineNr ctermfg=grey 
 set autowrite " Save file when switching buffers

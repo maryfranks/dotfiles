@@ -9,14 +9,15 @@ echo "###                           Setting up...                          ###"
 echo "########################################################################"
 echo ""
 
-# Install oh my zsh with curl command
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 # Install vimplug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vimcurl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+
+# TODO: changed location of .zshrc to .zsh/.zshrc
+# TODO: create directories for .zsh/plugins and .zsh/themes
 # symlinks for the files
 echo "Creating symlinks..."
 if test -f ~/.zshrc; then
@@ -47,13 +48,6 @@ if test -f ~/.vimrc; then
 fi
 ln -s ~/dotfiles/vimrc ~/.vimrc
 
-if test -f ~/.p10k.zsh; then
-  echo ".p10k.zsh already exists, creating backup: p10k.zsh-backup."
-
-  mv ~/.p10k.zsh ~/p10k.zsh-backup
-fi
-ln -s ~/dotfiles/p10k.zsh ~/.p10k.zsh
-
 # install homebrew (if it's not installed already)
 if [[ $(command -v brew) == "" ]]; then
     echo "Installing Hombrew"
@@ -64,8 +58,15 @@ else
 fi
 
 echo "brewing..."
+
+# TODO is brew bundle still the way?
 brew bundle
 
+# TODO Run these two commands after I install the zsh-completion. might break hard. maybe leave that out of brewfile?
+# chmod -R go-w '/opt/homebrew/share'
+# chmod -R go-w '/opt/homebrew/share/zsh'
+
+# TODO This is not right anymore
 echo "Installing git and git completion"
 # Create the folder structure
 mkdir -p ~/.zsh
@@ -73,5 +74,16 @@ cd ~/.zsh
 # Download the scripts
 curl -o git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 curl -o _git https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
+
+#  Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+# Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
 echo "All done!"

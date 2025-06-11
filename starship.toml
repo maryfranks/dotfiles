@@ -1,0 +1,28 @@
+# ~/.config/starship.toml
+format = '''
+$directory$git_branch$git_status$kubernetes
+[└─>](bold green) 
+'''
+
+[directory]
+style = "bold blue"
+
+[git_branch]
+style = "bold green"
+
+[git_status]
+style = "bold green"
+staged = '[++\($count\)](bold green)'
+modified = '[++\($count\)](bold purple)'
+untracked = '[++\($count\)](bold blue)'
+
+[kubernetes]
+format = '[󱃾 $context $namespace](dimmed cyan) '
+disabled = false
+
+[[kubernetes.contexts]]
+context_pattern = "gke_.*_(?P<cluster>[\\w-]+)"
+context_alias = "gke-$cluster"
+
+[gcloud]
+disabled = true 
