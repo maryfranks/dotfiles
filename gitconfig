@@ -1,8 +1,9 @@
 [user]
 	name = Mary Franks
-	email = maryfranks@gmail.com
+	email = mary.franks@recursionpharma.com
 [core]
 	excludesfile = ~/.gitignore_global
+	sshCommand = ssh -i ~/.ssh/github-rxrx-MFRA-XKGTJ2-MBP-2024-01-03
 [diff "sopsdiffer"]
 	textconv = sops -d
 [branch]
@@ -13,3 +14,5 @@
 	logline = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 [init]
 	defaultBranch = main
+[push]
+	autoSetupRemote = true
