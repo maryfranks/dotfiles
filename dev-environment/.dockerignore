@@ -1,0 +1,11 @@
+# Ignore version control and local hidden files
+.git
+.DS_Store
+
+# Ignore accidental secrets
+.env
+*.key
+
+# Ignore anything not needed in the image
+*.md
+install.sh
