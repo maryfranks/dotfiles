@@ -1,4 +1,4 @@
 {
   "name": "Custom Dev Environment",
-  "image": "ghcr.io/maryfranks/dev-environment:v1.0.0"
+  "image": "docker.io/maryfranks/dev-environment:v1.0.0"
 }
