@@ -54,9 +54,6 @@ alias gnb="git checkout -b"
 # # The next line updates PATH for the Google Cloud SDK.
 # if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc" ]; then . "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc" ]; then . "$(brew --prefix)/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"; fi
-
 # export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -72,3 +69,11 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 eval "$(starship init zsh)"
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/mary/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/mary/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/mary/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mary/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Created by `pipx` on 2025-09-23 18:14:10
+export PATH="$PATH:/Users/mary/.local/bin"

@@ -2,4 +2,13 @@
     "workbench.colorTheme": "Themer Future Pro Dark",
     "editor.fontFamily": "Hack Nerd Font, Menlo, Monaco, 'Courier New', monospace",
     "files.autoSave": "onFocusChange",
+    "editor.tabCompletion": "on",
+    "editor.quickSuggestions": {
+        "other": "on",
+        "comments": "off",
+        "strings": "off"
+    },
+    "editor.suggestOnTriggerCharacters": true,
+    "editor.acceptSuggestionOnEnter": "off",
+    "workbench.startupEditor": "none"
 }
