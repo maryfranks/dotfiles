@@ -1,4 +1,9 @@
 {
   "name": "Custom Dev Environment",
-  "image": "docker.io/maryfranks/dev-environment:v1.0.0"
+  "image": "docker.io/maryfranks/dev-environment:v1.0.0",
+  "features": {
+    "ghcr.io/devcontainers/features/sshd:1": {
+      "version": "latest"
+    }
+  }
 }
