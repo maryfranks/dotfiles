@@ -56,7 +56,7 @@ alias gnb="git checkout -b"
 
 # export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source <(fzf --zsh)
 
 # automatically sources autocompletion scripts 
 autoload -Uz compinit && compinit
